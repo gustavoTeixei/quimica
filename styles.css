@@ -1,23 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Limelight&family=Radley:ital@0;1&display=swap');
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Radley', sans-serif;
+    font-weight: 550;
     margin: 0;
     padding: 0;
-    color: #2c3e50;
     scroll-behavior: smooth;
     background-color: #f8f9fa;
   }
   
+  .logo_{
+    transform: scale(0.4);
+    position: relative;
+    left: 10em;
+    bottom: 10em;
+
+  }
 
   header {
-    background-color: #009688;
+    background-color: #323534;
     padding: 1rem;
     position: fixed;
     width: 100%;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
-  
+  p{
+    font-size: 1.4rem;
+  }
+  .title{
+    font-size: 60px;
+    letter-spacing: 50px;
+   font-family: Limelight;
+    color:#ffbf75;
+    text-shadow: 0 0 15px #ffbf75;
+    
+  }
+h2.title{
+  letter-spacing: normal;
+}
+
+
   nav ul {
     list-style: none;
     display: flex;
@@ -30,12 +53,12 @@ body {
   nav a {
     text-decoration: none;
     color: white;
-    font-weight: 600;
-    transition: color 0.3s;
+    font-weight: 800;
+    transition: color 0.7s;
   }
   
   nav a:hover {
-    color: #ffc107;
+    color: #dda853;
   }
   
   
@@ -48,18 +71,155 @@ body {
     padding: 2rem;
   }
   
-  #inicio {
-    background: linear-gradient(135deg, #009688, #4caf50);
-    color: white;
+  #cont{
+    position: relative;
+    bottom: 30em;
+  }
+
+  .content{   
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    border-radius: 40px;
+    position: relative;
+    background-color: #1313130e;
+    padding: 2em;
+    
+
   }
   
+  .content.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+  /* @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0); // Termina na posição normal 
+    }
+  } */
+
+/* Animação do corvo */
+.corvo-container {
+  max-width: 300px;
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: corvoEntrada 1.5s ease-out forwards;
+  animation-delay: 0.3s; /* Pequeno delay para melhor timing */
+  position: relative;
+}
+
+@keyframes corvoEntrada {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.corvo-img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 30px rgba(253, 195, 128, 0.7));
+  transition: transform 0.5s ease;
+  position: relative;
+  top: 250px;
+}
+
+.corvo-img2 {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 30px rgba(253, 195, 128, 0.7));
+  transition: transform 0.5s ease;
+  position: relative;
+  left: 500px;
+  bottom: 340px;
+ 
+  
+}
+
+/* Efeito sutil de flutuação após aparecer */
+.corvo-container.active .corvo-img {
+  animation: float 3s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+  #inicio {
+    background: #3b1111;
+    color: white;
+    
+  }
+
+ /* Animação especial para a seção inicial */
+#inicio .content {
+  opacity: 0;
+  transform: translateX(-100px);
+  animation: slideInFromLeft 1.5s ease-out 0.5s forwards; /* Delay de 0.5s */
+}
+
+@keyframes slideInFromLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Estilo para o título SANKOFA */
+#inicio .title {
+  animation: letterAnimation 1.7s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes letterAnimation {
+  0% {
+    opacity: 0;
+    letter-spacing: 50px;
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 20px; /* Valor menor que o original para melhor leitura */
+  }
+}
+
+/* Remova o fundo e sombras do conteúdo inicial */
+#inicio .content {
+  background: transparent !important;
+  box-shadow: none !important;
+  width: auto;
+  max-width: 800px;
+  padding: 20px;
+}
+.section:not(#inicio) .content.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+  
+  .sankofa{
+    color: #ffbf75;
+  }
+
+
   .intro-text {
-    font-size: 1.2rem;
-    margin: 1rem 0;
+    font-size: 1.6rem;
+    position: relative;
+    bottom: 40px;
+    
   }
   
   .cta-button {
-    background-color: #ffc107;
+    background-color: #ffffff;
     color: #2c3e50;
     border: none;
     padding: 0.8rem 2rem;
@@ -67,16 +227,19 @@ body {
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.3s, background-color 0.3s;
+    transition: transform 0.3s, background-color 1s;
   }
   
   .cta-button:hover {
     transform: scale(1.1);
     background-color: #ff9800;
+    border-radius: 1px;
   }
   
   #ideias {
-    background-color: #f4f4f4;
+        background: linear-gradient( #3b1111, #a14c46);
+
+    color: white;
   }
   
   .ideas-list {
@@ -89,7 +252,7 @@ body {
   }
   
   #galeria {
-    background: linear-gradient(135deg, #4caf50, #8bc34a);
+    background: linear-gradient( #a14c46, #d4807a);
     color: white;
   }
   
@@ -103,7 +266,7 @@ body {
       margin-left: 1rem;
       width: 25rem;
       border-radius: 12px;
-      border: 0.2rem double green;
+      border: 0.2rem double rgb(196, 157, 75);
       box-shadow: 0.4rem 0.5rem gray;
       
     }
@@ -111,7 +274,7 @@ body {
   .titulo{
         font-family: Times New Roman;
         border-radius: 12rem;
-        border: 0.4rem inset #7FFFD4;
+        border: 0.4rem inset #9bc2b5;
         font-size: 5rem;
       }
   
@@ -133,7 +296,7 @@ body {
   
   /* Sobre Nós */
   #sobre-nos {
-    background: linear-gradient(135deg, #ff9800, #f44336);
+    background: linear-gradient( #d4807a, #584d4d);
     color: white;
   }
   
@@ -141,9 +304,27 @@ body {
   footer {
     text-align: center;
     padding: 1rem;
-    background-color: #009688;
+    background-color: #323534;
     color: white;
     font-size: 0.9rem;
+  }
+  
+
+   @keyframes letterAnimation {
+    0% {
+      opacity: 0;
+      letter-spacing: 20px;
+    }
+    100% {
+      opacity: 1;
+      letter-spacing: normal;
+    }  
+  }
+   
+
+  h1 {
+    animation: letterAnimation 1.7s ease-out forwards;
+    opacity: 0; /* Garante que comece invisível */
   }
   
   /* Responsividade com Media Queries */
@@ -223,5 +404,5 @@ body {
 
   /*PNEUS*/
 img{
-  width: ;
+  display: block;
 }
